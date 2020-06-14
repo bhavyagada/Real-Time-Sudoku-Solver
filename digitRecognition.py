@@ -64,6 +64,8 @@ epochs = 35
 # Image dimensions
 img_rows, img_cols = 28, 28
 
+# The path in my system where data is stored
+##--- change this if you want to train data model on your own ---##
 DATADIR = "D:/RTSudoku"
 CATEGORIES = ["1","2","3","4","5","6","7","8","9"]
 
@@ -84,16 +86,16 @@ create_training_data()
 # Mix the data
 random.shuffle(training_data)
 
-# Split the data 50-50
+# Splitting the data 80-20
 x_train = []
 y_train = []
 x_test = []
 y_test = []
 
-for i in range(len(training_data)*5//10):
+for i in range(len(training_data)*8//10):
     x_train.append(training_data[i][0])
     y_train.append(training_data[i][1])
-for i in range(len(training_data)*5//10, len(training_data)):
+for i in range(len(training_data)*8//10, len(training_data)):
     x_test.append(training_data[i][0])
     y_test.append(training_data[i][1])
 
@@ -115,22 +117,31 @@ x_test = x_train / 255
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
+# Group a linear stack of layers
 model = Sequential()
+# 2D Convolution because of image, input_shape is the dimentions of image
+# Rectified linear unit to return positive values, zero if negative
 model.add(Conv2D(32, kernel_size=(3, 3),
                  activation='relu',
                  input_shape=input_shape))
 model.add(Conv2D(64, (3, 3), activation='relu'))
+# Downsampling with max operation on stride of size 2
 model.add(MaxPooling2D(pool_size=(2, 2)))
+# Randomly set input units as 0 with 0.25 frequency, done to avoid overfitting
 model.add(Dropout(0.25))
+# Flatten the input
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
+# Randomly set input units as 0 with 0.5 frequency, done to avoid overfitting
 model.add(Dropout(0.5))
+# softmax outputs a vector that represent probability distribution of potential outcomes
 model.add(Dense(num_classes, activation='softmax'))
 
 model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adadelta(),
               metrics=['accuracy'])
 
+# Train the data
 model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
@@ -140,4 +151,8 @@ score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
+# Saving the weights in this file
+# h5 file extension is used to save multidimensional arrays of data
+##--- Note- You don't need to train the CNN on your own computer ---##
+##--- Keep this file in your project directory ---##
 model.save_weights('digitRecognition.h5')
