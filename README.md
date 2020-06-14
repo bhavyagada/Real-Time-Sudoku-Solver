@@ -26,8 +26,8 @@ together all the information to make this project work.
 
 ## Installations needed to run the project?
 - Python 3
-- OpenCV
-- Tensorflow
+- OpenCV 4
+- Tensorflow >= 2.1.0
 - Keras
 
 ## How to run the project?
