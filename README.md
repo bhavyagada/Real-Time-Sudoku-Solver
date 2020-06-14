@@ -5,6 +5,7 @@
 
 - List of resources I used to to build this project:
   * Data used to train the CNN : http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/
+  * Keras API Documentation : https://keras.io/api/
   * CNN Training : https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py 
   * OpenCV Tutorial Playlist : https://www.youtube.com/watch?v=kdLM6AOd2vc&list=PLS1QulWo1RIa7D1O6skqDQ-JZ1GGHKK-K
   * Deep Learning Playlist : https://www.youtube.com/watch?v=wQ8BIBpya2k&list=PLQVvvaa0QuDfhTox0AjmQ6tvTgMBZBEXN
@@ -32,3 +33,9 @@ together all the information to make this project work.
 - **Note - If you want to try training the CNN, you will need to download the [Chars74K dataset](http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/), take images 1-9 (We only
 need 1-9 for the sudoku) and put them in folders named "1","2",....,"9" respectively in the same directory where all my python files are stored. 
 Finally, run the digitRecognition.py file.**
+
+## Note - SudokuSolver.py
+  - You don't need the SudokuSolver.py file to run the project.
+  - It consists of an algorithm to solve any sudoku, but I couldn't use it due to some issues.
+  - I am keeping it here because I loved the amazing implementation by PETER NORVIG. Read the explaination [here](http://norvig.com/sudoku.html).
+  - You can use this as a stand-alone file to solve any sudoku. (It solves any sudoku with average time of less than a second)
