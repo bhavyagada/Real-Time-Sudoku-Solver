@@ -143,5 +143,4 @@ def some(seq):
 
 ## Solve and display the puzzle
 
-# values = solve(hard1)
-# display(values)
+# display(solve(grid2))
