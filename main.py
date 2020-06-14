@@ -24,6 +24,8 @@ from keras import backend as K
 from keras.models import model_from_json
 import RTSudokuSolver
 
+##---------- START VIDEO AND PRINT SOLVED IMAGE ----------##
+
 def showImage(img, name, width, height):
     new_image = np.copy(img)
     new_image = cv2.resize(new_image, (width, height))
@@ -37,6 +39,9 @@ cap = cv2.VideoCapture(0, 700)
 # HD Camera
 cap.set(3, 1280)
 cap.set(4, 720)
+
+# Define codec to save video
+# out = cv2.VideoWriter("solution_video.avi", cv2.VideoWriter_fourcc('X','V','I','D'), 20.0, (640,480))
 
 # Loading model (Loading weights and configuration seperately to speed up model.predict)
 input_shape = (28, 28, 1)
@@ -67,10 +72,9 @@ while True:
         # Print solved image
         showImage(sudoku_frame, "Real Time Sudoku Solver", 1066, 600)
         
-        # Save the solved image & Exit
-        # if cv2.waitKey(1) & 0xFF == ord('s'):
-        #     cv2.imwrite("Sudoku_Solution.jpg", frame)
-        #     break
+        # Save the video
+        # comment this line if you don't want to save video
+        # out.write(frame)
         
         # waitKey(1) for continuously capturing images and quit by pressing 'q' key.
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -80,4 +84,5 @@ while True:
 
 # Release unneeded resources
 cap.release()
+# out.release()
 cv2.destroyAllWindows()
