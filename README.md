@@ -3,6 +3,10 @@
 ## Overview
 - I knew almost nothing about Image Processing and Machine Learning when I started this project. Inspired by an amazing [implementation](https://www.youtube.com/watch?v=QR66rMS_ZfA) on YouTube by geaxgx1, I decided to make my own.
 
+- This project is not perfect. The solution written on the image in real time will fluctuate a little bit. 
+- You will need to keep your computer and the sudoku board very stable to see proper results.
+- Along with that, the camera quality and the lighting around you will also affect the results you see.
+
 - List of resources I used to to build this project:
   * Data used to train the CNN : http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/
   * Keras API Documentation : https://keras.io/api/
