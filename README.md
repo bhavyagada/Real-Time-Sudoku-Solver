@@ -1,8 +1,7 @@
 # Real-Time-Sudoku-Solver
 
 ## Overview
-- I knew almost nothing about Image Processing and Machine Learning when I started this project. Inspired by an amazing [implementation] on YouTube by geaxgx1, 
-I decided to make my own. (https://www.youtube.com/watch?v=QR66rMS_ZfA)
+- I knew almost nothing about Image Processing and Machine Learning when I started this project. Inspired by an amazing [implementation](https://www.youtube.com/watch?v=QR66rMS_ZfA) on YouTube by geaxgx1, I decided to make my own.
 
 - List of resources I used to to build this project:
   * Data used to train the CNN : http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/
